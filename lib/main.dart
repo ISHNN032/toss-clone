@@ -22,14 +22,13 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color.fromRGBO(24, 23, 28, 1),
         brightness: Brightness.dark,
       ),
-      home: MyHomePage(title: '홈'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -57,10 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:
-            Text(widget.title, style: TextStyle(fontFamily: 'SpoqaHanSansNeo')),
-      ),
       body: currentWidgetView,
       bottomNavigationBar: Container(
         height: 80,
@@ -96,19 +91,43 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: () {
         setState(() {
           switch (item.title) {
-            case "Jobs":
+            case "홈":
               currentWidgetView = Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text("Jobs")],
+                  children: <Widget>[Text("홈")],
                 ),
               );
               break;
-            case "Applications":
+            case "내 소비":
               currentWidgetView = Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text("Applications")],
+                  children: <Widget>[Text("내 소비")],
+                ),
+              );
+              break;
+            case "혜택":
+              currentWidgetView = Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[Text("혜택")],
+                ),
+              );
+              break;
+            case "주식":
+              currentWidgetView = Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[Text("주식")],
+                ),
+              );
+              break;
+            case "전체":
+              currentWidgetView = Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[Text("전체")],
                 ),
               );
               break;
@@ -122,30 +141,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Icon(
+                item.icon
+            ),
             Text(
               item.title,
               style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+                fontSize: 12,
+                fontFamily: "SpoqaHanSansNeo",
+                fontWeight: FontWeight.w400,
               ),
             ),
-            selectedItem == item
-                ? Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Container(
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                    ],
-                  )
-                : Container(),
           ],
         ),
       ),
