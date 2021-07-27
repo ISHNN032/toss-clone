@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toss_clone/datas.dart';
+import 'package:toss_clone/data.dart';
 import 'package:toss_clone/pages/benefit/benefitpage.dart';
 import 'package:toss_clone/pages/consume/consumepage.dart';
 import 'package:toss_clone/pages/home/homepage.dart';
@@ -32,7 +32,7 @@ class Application extends StatelessWidget {
               .apply(bodyColor: Colors.blue),
           primaryTextTheme: TextTheme(
                   bodyText1:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                      TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   bodyText2:
                       TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                   button:

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:toss_clone/pages/home/components/listmenu.dart';
 
 import 'components/creditmenu.dart';
 
@@ -41,12 +42,13 @@ class _HomePage extends State<HomePage> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
         child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
           controller: _scrollController,
           slivers: <Widget>[
             SliverAppBar(
               pinned: true,
               bottom: PreferredSize(
-                child: Container (
+                child: Container(
                   color: isShrink
                       ? Colors.grey
                       : Theme.of(context).scaffoldBackgroundColor,
@@ -68,7 +70,9 @@ class _HomePage extends State<HomePage> {
                     child: Text(
                   "QR 체크인",
                   style: TextStyle(
-                      fontFamily: "", fontSize: 18, color: Colors.grey),
+                      fontFamily: "SpoqaHanSansNeo",
+                      fontSize: 18,
+                      color: Colors.grey),
                 )),
                 SizedBox(
                   width: 12,
@@ -88,18 +92,11 @@ class _HomePage extends State<HomePage> {
               child: CreditMenu(),
             ),
             SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Container(
-                    height: 80.0,
-                    child: Center(
-                      child: Text('$index', textScaleFactor: 2),
-                    ),
-                  );
-                },
-                childCount: 20,
-              ),
-            ),
+                delegate: SliverChildListDelegate(
+              [
+                ListMenu(),
+              ],
+            )),
           ],
         ),
         onRefresh: () => Future.value(true));
