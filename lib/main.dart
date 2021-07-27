@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:toss_clone/datas.dart';
+import 'package:toss_clone/pages/benefit/benefitpage.dart';
+import 'package:toss_clone/pages/consume/consumepage.dart';
+import 'package:toss_clone/pages/home/homepage.dart';
+import 'package:toss_clone/pages/menu/menupage.dart';
+import 'package:toss_clone/pages/stock/stockpage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Application());
 }
 
-class MyApp extends StatelessWidget {
+class Application extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -22,19 +27,18 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color.fromRGBO(24, 23, 28, 1),
         brightness: Brightness.dark,
       ),
-      home: MyHomePage(),
+      home: MainNavigation(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
-
+class MainNavigation extends StatefulWidget {
+  MainNavigation({Key? key}) : super(key: key);
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainNavigationState createState() => _MainNavigationState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainNavigationState extends State<MainNavigation> {
   List<NavigationItem> navigationItems = getNavigationItemList();
   late NavigationItem selectedItem;
   late Widget currentWidgetView;
@@ -45,10 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       selectedItem = navigationItems[0];
       currentWidgetView = Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
-        ),
+        child: HomePage(),
       );
     });
   }
@@ -93,42 +94,27 @@ class _MyHomePageState extends State<MyHomePage> {
           switch (item.title) {
             case "홈":
               currentWidgetView = Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text("홈")],
-                ),
+                child: HomePage(),
               );
               break;
             case "내 소비":
               currentWidgetView = Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text("내 소비")],
-                ),
+                child: ConsumePage(),
               );
               break;
             case "혜택":
               currentWidgetView = Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text("혜택")],
-                ),
+                child: BenefitPage(),
               );
               break;
             case "주식":
               currentWidgetView = Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text("주식")],
-                ),
+                child: StockPage(),
               );
               break;
             case "전체":
               currentWidgetView = Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text("전체")],
-                ),
+                child: MenuPage(),
               );
               break;
           }
