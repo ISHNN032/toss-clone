@@ -22,11 +22,23 @@ class Application extends StatelessWidget {
         brightness: Brightness.light,
       ),
       darkTheme: ThemeData(
-        fontFamily: 'SpoqaHanSansNeo',
-        primaryColor: Color.fromRGBO(24, 23, 28, 1),
-        scaffoldBackgroundColor: Color.fromRGBO(24, 23, 28, 1),
-        brightness: Brightness.dark,
-      ),
+          fontFamily: 'SpoqaHanSansNeo',
+          primaryColor: Colors.blue,
+          scaffoldBackgroundColor: Color.fromRGBO(24, 23, 28, 1),
+          brightness: Brightness.dark,
+          accentTextTheme: TextTheme(
+                  bodyText1:
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.w400))
+              .apply(bodyColor: Colors.blue),
+          primaryTextTheme: TextTheme(
+                  bodyText1:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                  bodyText2:
+                      TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                  button:
+                      TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          )
+              .apply(bodyColor: Colors.white)),
       home: MainNavigation(),
     );
   }
@@ -34,6 +46,7 @@ class Application extends StatelessWidget {
 
 class MainNavigation extends StatefulWidget {
   MainNavigation({Key? key}) : super(key: key);
+
   @override
   _MainNavigationState createState() => _MainNavigationState();
 }
@@ -59,10 +72,10 @@ class _MainNavigationState extends State<MainNavigation> {
     return Scaffold(
       body: currentWidgetView,
       bottomNavigationBar: Container(
-        height: 80,
+        height: 72,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
-          color: Color.fromRGBO(24, 23, 28, 1),
+          color: Theme.of(context).scaffoldBackgroundColor,
           boxShadow: [
             BoxShadow(
               color: Colors.grey,
@@ -127,17 +140,9 @@ class _MainNavigationState extends State<MainNavigation> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
-                item.icon
-            ),
-            Text(
-              item.title,
-              style: TextStyle(
-                fontSize: 12,
-                fontFamily: "SpoqaHanSansNeo",
-                fontWeight: FontWeight.w400,
-              ),
-            ),
+            Icon(item.icon),
+            Text(item.title,
+                style: Theme.of(context).primaryTextTheme.bodyText2),
           ],
         ),
       ),
