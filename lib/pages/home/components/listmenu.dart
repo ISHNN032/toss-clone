@@ -2,16 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../data.dart';
+import '../../../style.dart';
 
-final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-  onPrimary: Colors.white,
-  primary: Color.fromRGBO(44, 44, 52, 1),
-  minimumSize: Size(36, 34),
-  padding: EdgeInsets.symmetric(horizontal: 16),
-  shape: const RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(4)),
-  ),
-);
+final TextStyle itemTitleStyle = TextStyle(
+    fontSize: 12, fontWeight: FontWeight.w500, color: colorTextToneDown);
+final TextStyle itemValueStyle =
+    TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white);
 
 class ListMenu extends StatefulWidget {
   _ListMenu createState() => _ListMenu();
@@ -26,6 +22,7 @@ class _ListMenu extends State<ListMenu> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildList(accountItems, "계좌", 123123123),
         _buildList(cardItems, "카드", 12312312),
@@ -36,18 +33,16 @@ class _ListMenu extends State<ListMenu> {
 
   Widget _buildList(List<MenuPageItem> list, String title, int value) {
     return Container(
-      margin: EdgeInsets.all(20.0),
+      padding: EdgeInsets.symmetric(vertical: 18),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(width: 0.1, color: Colors.grey),
+          bottom: BorderSide(width: 1, color: colorLine),
         ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildColumnHeader(title, value),
-          SizedBox(
-            height: 20,
-          ),
           Column(
             children:
                 List.generate(list.length, (index) => _buildRow(list[index])),
@@ -59,36 +54,38 @@ class _ListMenu extends State<ListMenu> {
 
   Widget _buildColumnHeader(String title, int value) {
     String formattedValue =
-        "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "")
-            .format(value)} 원";
+        "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "").format(value)} 원 >";
 
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Text(
-        title,
-        style: Theme.of(context).primaryTextTheme.bodyText1,
-      ),
-      Text(
-        formattedValue,
-        style: Theme.of(context).primaryTextTheme.bodyText2,
-      ),
-    ]);
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 16),
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Text(
+            title,
+            style: Theme.of(context).primaryTextTheme.bodyText1,
+          ),
+          Text(
+            formattedValue,
+            style: Theme.of(context).primaryTextTheme.bodyText2,
+          ),
+        ]));
   }
 
   Widget _buildRow(MenuPageItem item) {
     String formattedValue =
-        "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "")
-        .format(item.value)} 원";
+        "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "").format(item.value)} 원";
 
     Widget trailing = SizedBox(
-      width: 10,
+      width: 12,
     );
     if (item.available) {
       switch (item.type) {
         case MenuItemType.ACCOUNT:
           trailing = ElevatedButton(
-            style: raisedButtonStyle,
+            style: rowButtonStyle,
             onPressed: onPressed,
-            child: Text("송금", style: Theme.of(context).primaryTextTheme.bodyText2),
+            child: Text("송금", style: rowButtonTextStyle),
           );
           break;
         case MenuItemType.CARD:
@@ -100,26 +97,34 @@ class _ListMenu extends State<ListMenu> {
       }
     }
 
-    return ListTile(
+    return Container(
+        child: ListTile(
+      contentPadding: EdgeInsets.fromLTRB(24, 8, 24, 8),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             item.title,
-            style: Theme.of(context).primaryTextTheme.bodyText2,
+            style: itemTitleStyle,
+          ),
+          SizedBox(
+            height: 2,
           ),
           Text(
             formattedValue,
-            style: Theme.of(context).primaryTextTheme.bodyText1,
+            style: itemValueStyle,
           ),
         ],
       ),
-      leading: Icon(item.icon, size: 36,),
+      leading: Icon(
+        item.icon,
+        size: 36,
+      ),
       trailing: trailing,
       onTap: () {
         setState(() {});
       },
-    );
+    ));
   }
 
   void onPressed() {}

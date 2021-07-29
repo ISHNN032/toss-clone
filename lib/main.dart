@@ -5,6 +5,7 @@ import 'package:toss_clone/pages/consume/consumepage.dart';
 import 'package:toss_clone/pages/home/homepage.dart';
 import 'package:toss_clone/pages/menu/menupage.dart';
 import 'package:toss_clone/pages/stock/stockpage.dart';
+import 'package:toss_clone/style.dart';
 
 void main() {
   runApp(Application());
@@ -17,28 +18,23 @@ class Application extends StatelessWidget {
     return MaterialApp(
       title: '토스',
       themeMode: ThemeMode.dark,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-      ),
       darkTheme: ThemeData(
-          fontFamily: 'SpoqaHanSansNeo',
-          primaryColor: Colors.blue,
-          scaffoldBackgroundColor: Color.fromRGBO(24, 23, 28, 1),
+          primaryColor: colorAssent,
+          scaffoldBackgroundColor: colorBackGround,
           brightness: Brightness.dark,
           accentTextTheme: TextTheme(
-                  bodyText1:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.w400))
-              .apply(bodyColor: Colors.blue),
+            bodyText1: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ).apply(bodyColor: colorAssent),
           primaryTextTheme: TextTheme(
-                  bodyText1:
-                      TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                  bodyText2:
-                      TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-                  button:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-          )
-              .apply(bodyColor: Colors.white)),
+            bodyText1: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white),
+            bodyText2: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w400,
+                color: colorTextToneDown),
+            button: TextStyle(
+                fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
+          )),
       home: MainNavigation(),
     );
   }
@@ -78,9 +74,9 @@ class _MainNavigationState extends State<MainNavigation> {
           color: Theme.of(context).scaffoldBackgroundColor,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey,
-              offset: Offset(0.0, 0.2), //(x,y)
-              blurRadius: 1.0,
+              color: colorNavigationDisabled,
+              offset: Offset(0.0, 0.1), //(x,y)
+              blurRadius: 0.1,
             ),
           ],
         ),
@@ -134,15 +130,21 @@ class _MainNavigationState extends State<MainNavigation> {
           selectedItem = item;
         });
       },
-      child: AnimatedOpacity(
+      child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
-        opacity: selectedItem == item ? 1.0 : 0.3,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(item.icon),
+            Icon(
+              item.icon,
+              color:
+                  selectedItem == item ? Colors.white : colorNavigationDisabled,
+            ),
             Text(item.title,
-                style: Theme.of(context).primaryTextTheme.bodyText2),
+                style: Theme.of(context).primaryTextTheme.button!.apply(
+                    color: selectedItem == item
+                        ? Colors.white
+                        : colorNavigationDisabled)),
           ],
         ),
       ),

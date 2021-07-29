@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../style.dart';
+
 class CreditMenu extends StatefulWidget {
   _CreditMenu createState() => _CreditMenu();
 }
@@ -9,11 +11,11 @@ class _CreditMenu extends State<CreditMenu> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 84,
-        margin: EdgeInsets.all(20.0),
+        height: 106,
+        padding: EdgeInsets.all(26),
         decoration: BoxDecoration(
           border: Border(
-            bottom: BorderSide(width: 0.1, color: Colors.grey),
+            bottom: BorderSide(width: 1, color: colorLine),
           ),
           color: Theme.of(context).scaffoldBackgroundColor,
         ),
@@ -24,7 +26,7 @@ class _CreditMenu extends State<CreditMenu> {
               Icon(
                 Icons.account_circle_rounded,
                 size: 54,
-                color: Colors.grey,
+                color: colorNavigationDisabled,
               ),
               SizedBox(
                 width: 12,
@@ -45,10 +47,11 @@ class _CreditMenu extends State<CreditMenu> {
               )
             ]),
             ElevatedButton(
+              style: primaryButtonStyle,
               onPressed: remitPressed,
               child: Text(
                 "송금",
-                style: Theme.of(context).primaryTextTheme.button,
+                style: primaryButtonTextStyle,
               ),
             )
           ],

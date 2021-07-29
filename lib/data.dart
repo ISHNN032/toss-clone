@@ -31,8 +31,6 @@ List<MenuPageItem> getMenuPageItemList(MenuItemType type) {
               Icons.arrow_drop_down_circle_rounded, "샘플 통장6", 12352, false),
           MenuPageItem(MenuItemType.ACCOUNT,
               Icons.arrow_drop_down_circle_rounded, "샘플 통장7", 1234, false),
-          MenuPageItem(MenuItemType.ACCOUNT,
-              Icons.arrow_drop_down_circle_rounded, "샘플 통장8", 1235213, false),
         ];
       }
     case MenuItemType.CARD:
@@ -49,10 +47,10 @@ List<MenuPageItem> getMenuPageItemList(MenuItemType type) {
     case MenuItemType.INSURANCE:
       {
         return <MenuPageItem>[
-          MenuPageItem(MenuItemType.INSURANCE, Icons.add_circle, "샘플 보험1",
-              2345, false),
-          MenuPageItem(MenuItemType.INSURANCE, Icons.add_circle, "샘플 보험2",
-              34555, false),
+          MenuPageItem(
+              MenuItemType.INSURANCE, Icons.add_circle, "샘플 보험1", 2345, false),
+          MenuPageItem(
+              MenuItemType.INSURANCE, Icons.add_circle, "샘플 보험2", 34555, false),
         ];
       }
   }
