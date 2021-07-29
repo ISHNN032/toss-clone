@@ -10,27 +10,60 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  final _scrollController = ScrollController();
+  double scrollOpacity = 0;
+
+  onScroll() {
+    setState(() {
+      //opacity = _scrollController.offset;
+      double offset = _scrollController.offset;
+      if (offset < 0) {
+        offset = 0;
+      } else if (offset > 100) {
+        offset = 100;
+      }
+      scrollOpacity = offset / 100;
+    });
+  }
+
+  @override
+  void initState() {
+    _scrollController.addListener(onScroll);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(onScroll);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
         child: CustomScrollView(
           physics: BouncingScrollPhysics(),
+          controller: _scrollController,
           slivers: <Widget>[
             SliverAppBar(
               pinned: true,
               bottom: PreferredSize(
-                child: Container(
-                  color: colorLine,
-                  height: 1,
-                ),
+                child: Opacity(
+                    opacity: scrollOpacity,
+                    child: Container(
+                      color: colorLine,
+                      height: 1,
+                    )),
                 preferredSize: Size.fromHeight(0),
               ),
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              title: Text("홈",
-                  style: TextStyle(
-                    fontSize: 19.0,
-                    fontWeight: FontWeight.w500,
-                  )),
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(scrollOpacity),
+              title: Opacity(
+                  opacity: scrollOpacity,
+                  child: Text("홈",
+                      style: TextStyle(
+                        fontSize: 19.0,
+                        fontWeight: FontWeight.w500,
+                      ))),
               actions: <Widget>[
                 Center(
                     child: Text(
