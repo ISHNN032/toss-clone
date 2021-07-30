@@ -4,12 +4,12 @@ import 'package:intl/intl.dart';
 
 import '../../../data.dart';
 import '../../../style.dart';
-import 'homelist.dart';
+import 'consumelist.dart';
 
 class ListItem extends StatelessWidget {
   final List<MenuPageItem> list;
   final String title;
-  final int value;
+  final String value;
 
   ListItem(this.list, this.title, this.value);
 
@@ -35,10 +35,7 @@ class ListItem extends StatelessWidget {
     );
   }
 
-  Widget _buildColumnHeader(BuildContext context, String title, int value) {
-    String formattedValue =
-        "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "").format(value)} 원 >";
-
+  Widget _buildColumnHeader(BuildContext context, String title, String value) {
     return Container(
         margin: EdgeInsets.symmetric(vertical: 16),
         padding: EdgeInsets.symmetric(horizontal: 24),
@@ -49,7 +46,7 @@ class ListItem extends StatelessWidget {
             style: textThemePrimary.bodyText1,
           ),
           Text(
-            formattedValue,
+            value,
             style: textThemePrimary.bodyText2,
           ),
         ]));
@@ -64,29 +61,29 @@ class ListItem extends StatelessWidget {
     );
     if (item.available) {
       switch (item.type) {
-        case MenuItemType.ACCOUNT:
+        case MenuItemType.CONSUME:
           trailing = ElevatedButton(
               onPressed: onPressed,
               style: styleButtonSub
                   .merge(ElevatedButton.styleFrom(primary: colorButton)),
               child: Text(
-                "송금",
-                style: textThemeSub.bodyText2,
+                "청구서 보기",
+                style: textThemeSub.bodyText2!.merge(TextStyle(color: colorAssent)),
               ));
           break;
-        case MenuItemType.CARD:
-          trailing = Text("실적달성");
-          break;
-        case MenuItemType.INSURANCE:
-          // none
-          break;
-        case MenuItemType.CONSUME:
-        // none
-          break;
         case MenuItemType.CONSUME_TITLE:
-        // none
+          //none
           break;
         case MenuItemType.INFO:
+          trailing = Text("302,123 원");
+          break;
+        case MenuItemType.ACCOUNT:
+        // none
+          break;
+        case MenuItemType.CARD:
+        // none
+          break;
+        case MenuItemType.INSURANCE:
         // none
           break;
       }
@@ -99,15 +96,15 @@ class ListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item.title,
-            style: textThemeItem.bodyText2,
+            "- $formattedValue",
+            style: textThemeItem.bodyText1,
           ),
           SizedBox(
             height: 2,
           ),
           Text(
-            formattedValue,
-            style: textThemeItem.bodyText1,
+            item.title,
+            style: textThemeItem.bodyText2,
           ),
         ],
       ),

@@ -10,7 +10,7 @@ class MenuPageItem {
   MenuPageItem(this.type, this.icon, this.title, this.value, this.available);
 }
 
-enum MenuItemType { ACCOUNT, CARD, INSURANCE }
+enum MenuItemType { ACCOUNT, CARD, INSURANCE, CONSUME, CONSUME_TITLE, INFO }
 
 List<MenuPageItem> getMenuPageItemList(MenuItemType type) {
   switch (type) {
@@ -53,6 +53,28 @@ List<MenuPageItem> getMenuPageItemList(MenuItemType type) {
               MenuItemType.INSURANCE, Icons.add_circle, "샘플 보험2", 34555, false),
         ];
       }
+    case MenuItemType.CONSUME:{
+      return <MenuPageItem>[
+        MenuPageItem(
+            MenuItemType.CONSUME, Icons.add_circle, "샘플 내역1", 2345, true),
+        MenuPageItem(
+            MenuItemType.CONSUME, Icons.add_circle, "샘플 내역2", 34555, false),
+      ];
+    }
+    case MenuItemType.CONSUME_TITLE:{
+      return <MenuPageItem>[
+        MenuPageItem(
+            MenuItemType.CONSUME_TITLE, Icons.add_circle, "지름신은 당신을 사랑하십니다", 2345, false),
+      ];
+    }
+    case MenuItemType.INFO:{
+      return <MenuPageItem>[
+        MenuPageItem(
+            MenuItemType.INFO, Icons.add_circle, "할부", 2345, true),
+        MenuPageItem(
+            MenuItemType.INFO, Icons.add_circle, "완료된 고정 지출", 34555, true),
+      ];
+    }
   }
 }
 
