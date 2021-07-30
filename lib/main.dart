@@ -53,12 +53,13 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: currentWidgetView,
       bottomNavigationBar: Container(
         height: 72,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: colorBackGround,
           boxShadow: [
             BoxShadow(
               color: colorToneDown,

@@ -107,11 +107,14 @@ class ListItem extends StatelessWidget {
         size: 36,
       ),
       trailing: trailing,
-      onTap: null,
+      onTap: onTab,
     ));
   }
 
   void onPressed(){
+
+  }
+  void onTab(){
 
   }
 }

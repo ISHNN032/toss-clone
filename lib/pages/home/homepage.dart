@@ -42,11 +42,14 @@ class _HomePage extends State<HomePage> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
         child: CustomScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: RangeMaintainingScrollPhysics(),
           controller: _scrollController,
+          scrollBehavior: NoBehavior(),
           slivers: <Widget>[
             SliverAppBar(
               pinned: true,
+              collapsedHeight: null,
+              elevation: 0,
               bottom: PreferredSize(
                 child: Opacity(
                     opacity: scrollOpacity,
@@ -66,10 +69,7 @@ class _HomePage extends State<HomePage> {
                       ))),
               actions: <Widget>[
                 Center(
-                    child: Text(
-                  "QR 체크인",
-                  style: textThemePrimary.bodyText2
-                )),
+                    child: Text("QR 체크인", style: textThemePrimary.bodyText2)),
                 SizedBox(
                   width: 12,
                 ),
@@ -94,6 +94,21 @@ class _HomePage extends State<HomePage> {
                 delegate: SliverChildListDelegate(
               [
                 HomeList(),
+                Container(
+                  height: 180,
+                  color: colorDarkBackGround,
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 36,),
+                      Text("홈 편집 · 금액 숨기기",
+                          style:
+                              TextStyle(decoration: TextDecoration.underline,
+                              color: colorToneDown)),
+                      SizedBox(height: 72,)
+                    ],
+                  ),
+                ),
               ],
             )),
           ],
@@ -102,4 +117,12 @@ class _HomePage extends State<HomePage> {
   }
 
   void onRefresh() {}
+}
+
+class NoBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
 }
