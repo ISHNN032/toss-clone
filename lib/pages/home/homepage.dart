@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:toss_clone/pages/home/components/listmenu.dart';
+import 'package:toss_clone/pages/home/components/homelist.dart';
 
 import '../../style.dart';
 import 'components/creditmenu.dart';
@@ -56,7 +56,7 @@ class _HomePage extends State<HomePage> {
                     )),
                 preferredSize: Size.fromHeight(0),
               ),
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(scrollOpacity),
+              backgroundColor: colorBackGround.withOpacity(scrollOpacity),
               title: Opacity(
                   opacity: scrollOpacity,
                   child: Text("홈",
@@ -68,7 +68,7 @@ class _HomePage extends State<HomePage> {
                 Center(
                     child: Text(
                   "QR 체크인",
-                  style: Theme.of(context).primaryTextTheme.bodyText2,
+                  style: textThemePrimary.bodyText2
                 )),
                 SizedBox(
                   width: 12,
@@ -93,7 +93,7 @@ class _HomePage extends State<HomePage> {
             SliverList(
                 delegate: SliverChildListDelegate(
               [
-                ListMenu(),
+                HomeList(),
               ],
             )),
           ],

@@ -21,20 +21,7 @@ class Application extends StatelessWidget {
       darkTheme: ThemeData(
           primaryColor: colorAssent,
           scaffoldBackgroundColor: colorBackGround,
-          brightness: Brightness.dark,
-          accentTextTheme: TextTheme(
-            bodyText1: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ).apply(bodyColor: colorAssent),
-          primaryTextTheme: TextTheme(
-            bodyText1: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white),
-            bodyText2: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w400,
-                color: colorTextToneDown),
-            button: TextStyle(
-                fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
-          )),
+          brightness: Brightness.dark),
       home: MainNavigation(),
     );
   }
@@ -74,7 +61,7 @@ class _MainNavigationState extends State<MainNavigation> {
           color: Theme.of(context).scaffoldBackgroundColor,
           boxShadow: [
             BoxShadow(
-              color: colorNavigationDisabled,
+              color: colorToneDown,
               offset: Offset(0.0, 0.1), //(x,y)
               blurRadius: 0.1,
             ),
@@ -137,13 +124,14 @@ class _MainNavigationState extends State<MainNavigation> {
           children: <Widget>[
             Icon(
               item.icon,
-              color:
-                  selectedItem == item ? Colors.white : colorNavigationDisabled,
+              color: selectedItem == item
+                  ? colorNavigationEnabled
+                  : colorNavigationDisabled,
             ),
             Text(item.title,
                 style: Theme.of(context).primaryTextTheme.button!.apply(
                     color: selectedItem == item
-                        ? Colors.white
+                        ? colorNavigationEnabled
                         : colorNavigationDisabled)),
           ],
         ),

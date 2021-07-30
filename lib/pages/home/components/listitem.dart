@@ -1,37 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../../../data.dart';
 import '../../../style.dart';
+import 'homelist.dart';
 
-final TextStyle itemTitleStyle = TextStyle(
-    fontSize: 12, fontWeight: FontWeight.w500, color: colorTextToneDown);
-final TextStyle itemValueStyle =
-    TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white);
+class ListItem extends StatelessWidget {
+  final List<MenuPageItem> list;
+  final String title;
+  final int value;
 
-class ListMenu extends StatefulWidget {
-  _ListMenu createState() => _ListMenu();
-}
-
-class _ListMenu extends State<ListMenu> {
-  List<MenuPageItem> accountItems = getMenuPageItemList(MenuItemType.ACCOUNT);
-  List<MenuPageItem> cardItems = getMenuPageItemList(MenuItemType.CARD);
-  List<MenuPageItem> insuranceItems =
-      getMenuPageItemList(MenuItemType.INSURANCE);
+  ListItem(this.list, this.title, this.value);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildList(accountItems, "계좌", 123123123),
-        _buildList(cardItems, "카드", 12312312),
-        _buildList(insuranceItems, "보험", 123123),
-      ],
-    );
-  }
-
-  Widget _buildList(List<MenuPageItem> list, String title, int value) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 18),
       decoration: BoxDecoration(
@@ -42,7 +25,7 @@ class _ListMenu extends State<ListMenu> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildColumnHeader(title, value),
+          _buildColumnHeader(context, title, value),
           Column(
             children:
                 List.generate(list.length, (index) => _buildRow(list[index])),
@@ -52,7 +35,7 @@ class _ListMenu extends State<ListMenu> {
     );
   }
 
-  Widget _buildColumnHeader(String title, int value) {
+  Widget _buildColumnHeader(BuildContext context, String title, int value) {
     String formattedValue =
         "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "").format(value)} 원 >";
 
@@ -63,11 +46,11 @@ class _ListMenu extends State<ListMenu> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(
             title,
-            style: Theme.of(context).primaryTextTheme.bodyText1,
+            style: textThemePrimary.bodyText1,
           ),
           Text(
             formattedValue,
-            style: Theme.of(context).primaryTextTheme.bodyText2,
+            style: textThemePrimary.bodyText2,
           ),
         ]));
   }
@@ -83,10 +66,13 @@ class _ListMenu extends State<ListMenu> {
       switch (item.type) {
         case MenuItemType.ACCOUNT:
           trailing = ElevatedButton(
-            style: rowButtonStyle,
-            onPressed: onPressed,
-            child: Text("송금", style: rowButtonTextStyle),
-          );
+              onPressed: onPressed,
+              style: styleButtonSub
+                  .merge(ElevatedButton.styleFrom(primary: colorButton)),
+              child: Text(
+                "송금",
+                style: textThemeSub.bodyText2,
+              ));
           break;
         case MenuItemType.CARD:
           trailing = Text("실적달성");
@@ -105,14 +91,14 @@ class _ListMenu extends State<ListMenu> {
         children: [
           Text(
             item.title,
-            style: itemTitleStyle,
+            style: textThemeItem.bodyText2,
           ),
           SizedBox(
             height: 2,
           ),
           Text(
             formattedValue,
-            style: itemValueStyle,
+            style: textThemeItem.bodyText1,
           ),
         ],
       ),
@@ -121,11 +107,11 @@ class _ListMenu extends State<ListMenu> {
         size: 36,
       ),
       trailing: trailing,
-      onTap: () {
-        setState(() {});
-      },
+      onTap: null,
     ));
   }
 
-  void onPressed() {}
+  void onPressed(){
+
+  }
 }

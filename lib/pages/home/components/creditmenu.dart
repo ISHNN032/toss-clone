@@ -17,7 +17,6 @@ class _CreditMenu extends State<CreditMenu> {
           border: Border(
             bottom: BorderSide(width: 1, color: colorLine),
           ),
-          color: Theme.of(context).scaffoldBackgroundColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,7 +25,7 @@ class _CreditMenu extends State<CreditMenu> {
               Icon(
                 Icons.account_circle_rounded,
                 size: 54,
-                color: colorNavigationDisabled,
+                color: colorMainIcon,
               ),
               SizedBox(
                 width: 12,
@@ -37,22 +36,20 @@ class _CreditMenu extends State<CreditMenu> {
                 children: [
                   Text(
                     "김지수",
-                    style: Theme.of(context).primaryTextTheme.bodyText1,
+                    style: textThemePrimary.bodyText1,
                   ),
                   Text(
                     "신용 999점",
-                    style: Theme.of(context).accentTextTheme.bodyText1,
+                    style: textThemePrimary.bodyText2!.merge(TextStyle(color: colorAssent)),
                   ),
                 ],
               )
             ]),
             ElevatedButton(
-              style: primaryButtonStyle,
+              style: styleButtonPrimary.merge(
+                  ElevatedButton.styleFrom(primary: colorAssent)),
               onPressed: remitPressed,
-              child: Text(
-                "송금",
-                style: primaryButtonTextStyle,
-              ),
+              child: Text("송금"),
             )
           ],
         ));
