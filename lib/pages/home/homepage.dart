@@ -48,7 +48,6 @@ class _HomePage extends State<HomePage> {
           slivers: <Widget>[
             SliverAppBar(
               pinned: true,
-              collapsedHeight: null,
               elevation: 0,
               bottom: PreferredSize(
                 child: Opacity(
