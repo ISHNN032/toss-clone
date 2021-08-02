@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:toss_clone/pages/consume/components/consumelist.dart';
-import 'package:toss_clone/pages/home/components/homelist.dart';
+
 import '../../style.dart';
 import 'components/consumemenu.dart';
+import 'components/consumelist.dart';
 
 class ConsumePage extends StatefulWidget {
   _ConsumePage createState() => _ConsumePage();

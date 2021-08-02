@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:toss_clone/pages/consume/components/infodialog.dart';
 
 import '../../../../style.dart';
+import 'infodialog.dart';
 
 class CreditMenu extends StatefulWidget {
   _CreditMenu createState() => _CreditMenu();

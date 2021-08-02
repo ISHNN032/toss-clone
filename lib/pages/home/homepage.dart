@@ -99,12 +99,16 @@ class _HomePage extends State<HomePage> {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
-                      SizedBox(height: 36,),
+                      SizedBox(
+                        height: 36,
+                      ),
                       Text("홈 편집 · 금액 숨기기",
-                          style:
-                              TextStyle(decoration: TextDecoration.underline,
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
                               color: colorToneDown)),
-                      SizedBox(height: 72,)
+                      SizedBox(
+                        height: 72,
+                      )
                     ],
                   ),
                 ),

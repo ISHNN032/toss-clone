@@ -2,12 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../data.dart';
+import '../../../datas/accountitem.dart';
 import '../../../style.dart';
-import 'consumelist.dart';
 
 class ListItem extends StatelessWidget {
-  final List<MenuPageItem> list;
+  final List<AccountItem> list;
   final String title;
   final String value;
 
@@ -52,7 +51,7 @@ class ListItem extends StatelessWidget {
         ]));
   }
 
-  Widget _buildRow(MenuPageItem item) {
+  Widget _buildRow(AccountItem item) {
     String formattedValue =
         "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "").format(item.value)} 원";
 
@@ -61,30 +60,31 @@ class ListItem extends StatelessWidget {
     );
     if (item.available) {
       switch (item.type) {
-        case MenuItemType.CONSUME:
+        case AccountItemType.CONSUME:
           trailing = ElevatedButton(
               onPressed: onPressed,
               style: styleButtonSub
                   .merge(ElevatedButton.styleFrom(primary: colorButton)),
               child: Text(
                 "청구서 보기",
-                style: textThemeSub.bodyText2!.merge(TextStyle(color: colorAssent)),
+                style: textThemeSub.bodyText2!
+                    .merge(TextStyle(color: colorAssent)),
               ));
           break;
-        case MenuItemType.CONSUME_TITLE:
+        case AccountItemType.CONSUME_TITLE:
           //none
           break;
-        case MenuItemType.INFO:
+        case AccountItemType.INFO:
           trailing = Text("302,123 원");
           break;
-        case MenuItemType.ACCOUNT:
-        // none
+        case AccountItemType.ACCOUNT:
+          // none
           break;
-        case MenuItemType.CARD:
-        // none
+        case AccountItemType.CARD:
+          // none
           break;
-        case MenuItemType.INSURANCE:
-        // none
+        case AccountItemType.INSURANCE:
+          // none
           break;
       }
     }
@@ -117,10 +117,7 @@ class ListItem extends StatelessWidget {
     ));
   }
 
-  void onPressed(){
+  void onPressed() {}
 
-  }
-  void onTab(){
-
-  }
+  void onTab() {}
 }

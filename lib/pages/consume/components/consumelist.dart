@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../../datas/accountitem.dart';
 import 'listitem.dart';
-import '../../../data.dart';
 
 class ConsumeList extends StatefulWidget {
   _ConsumeList createState() => _ConsumeList();
 }
 
 class _ConsumeList extends State<ConsumeList> {
-  List<MenuPageItem> consumeItems = getMenuPageItemList(MenuItemType.CONSUME);
-  List<MenuPageItem> consumeTitleItems = getMenuPageItemList(MenuItemType.CONSUME_TITLE);
-  List<MenuPageItem> infoItems =
-      getMenuPageItemList(MenuItemType.INFO);
+  List<AccountItem> consumeItems = getMenuPageItemList(AccountItemType.CONSUME);
+  List<AccountItem> consumeTitleItems = getMenuPageItemList(AccountItemType.CONSUME_TITLE);
+  List<AccountItem> infoItems =
+      getMenuPageItemList(AccountItemType.INFO);
 
   @override
   Widget build(BuildContext context) {

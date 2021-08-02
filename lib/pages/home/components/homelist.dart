@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:toss_clone/pages/home/components/listitem.dart';
-import '../../../data.dart';
+
+import '../../../datas/accountitem.dart';
+import 'listitem.dart';
 
 class HomeList extends StatefulWidget {
   _HomeList createState() => _HomeList();
 }
 
 class _HomeList extends State<HomeList> {
-  List<MenuPageItem> accountItems = getMenuPageItemList(MenuItemType.ACCOUNT);
-  List<MenuPageItem> cardItems = getMenuPageItemList(MenuItemType.CARD);
-  List<MenuPageItem> insuranceItems =
-      getMenuPageItemList(MenuItemType.INSURANCE);
+  List<AccountItem> accountItems = getMenuPageItemList(AccountItemType.ACCOUNT);
+  List<AccountItem> cardItems = getMenuPageItemList(AccountItemType.CARD);
+  List<AccountItem> insuranceItems =
+      getMenuPageItemList(AccountItemType.INSURANCE);
 
   @override
   Widget build(BuildContext context) {

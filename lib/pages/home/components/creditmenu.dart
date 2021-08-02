@@ -40,14 +40,15 @@ class _CreditMenu extends State<CreditMenu> {
                   ),
                   Text(
                     "신용 999점",
-                    style: textThemePrimary.bodyText2!.merge(TextStyle(color: colorAssent)),
+                    style: textThemePrimary.bodyText2!
+                        .merge(TextStyle(color: colorAssent)),
                   ),
                 ],
               )
             ]),
             ElevatedButton(
-              style: styleButtonPrimary.merge(
-                  ElevatedButton.styleFrom(primary: colorAssent)),
+              style: styleButtonPrimary
+                  .merge(ElevatedButton.styleFrom(primary: colorAssent)),
               onPressed: remitPressed,
               child: Text("송금"),
             )

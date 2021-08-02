@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:toss_clone/data.dart';
 import 'package:toss_clone/pages/benefit/benefitpage.dart';
 import 'package:toss_clone/pages/consume/consumepage.dart';
 import 'package:toss_clone/pages/home/homepage.dart';
 import 'package:toss_clone/pages/menu/menupage.dart';
 import 'package:toss_clone/pages/stock/stockpage.dart';
 import 'package:toss_clone/style.dart';
+import 'package:toss_clone/datas/navigationitem.dart';
 
 void main() {
   runApp(Application());

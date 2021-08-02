@@ -2,12 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../data.dart';
+import '../../../datas/accountitem.dart';
 import '../../../style.dart';
-import 'homelist.dart';
 
 class ListItem extends StatelessWidget {
-  final List<MenuPageItem> list;
+  final List<AccountItem> list;
   final String title;
   final int value;
 
@@ -55,7 +54,7 @@ class ListItem extends StatelessWidget {
         ]));
   }
 
-  Widget _buildRow(MenuPageItem item) {
+  Widget _buildRow(AccountItem item) {
     String formattedValue =
         "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "").format(item.value)} 원";
 
@@ -64,7 +63,7 @@ class ListItem extends StatelessWidget {
     );
     if (item.available) {
       switch (item.type) {
-        case MenuItemType.ACCOUNT:
+        case AccountItemType.ACCOUNT:
           trailing = ElevatedButton(
               onPressed: onPressed,
               style: styleButtonSub
@@ -74,20 +73,20 @@ class ListItem extends StatelessWidget {
                 style: textThemeSub.bodyText2,
               ));
           break;
-        case MenuItemType.CARD:
+        case AccountItemType.CARD:
           trailing = Text("실적달성");
           break;
-        case MenuItemType.INSURANCE:
+        case AccountItemType.INSURANCE:
           // none
           break;
-        case MenuItemType.CONSUME:
-        // none
+        case AccountItemType.CONSUME:
+          // none
           break;
-        case MenuItemType.CONSUME_TITLE:
-        // none
+        case AccountItemType.CONSUME_TITLE:
+          // none
           break;
-        case MenuItemType.INFO:
-        // none
+        case AccountItemType.INFO:
+          // none
           break;
       }
     }
@@ -120,10 +119,7 @@ class ListItem extends StatelessWidget {
     ));
   }
 
-  void onPressed(){
+  void onPressed() {}
 
-  }
-  void onTab(){
-
-  }
+  void onTab() {}
 }
