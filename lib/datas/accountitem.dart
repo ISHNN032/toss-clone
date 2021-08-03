@@ -10,7 +10,7 @@ class AccountItem {
   AccountItem(this.type, this.icon, this.title, this.value, this.available);
 }
 
-enum AccountItemType { ACCOUNT, CARD, INSURANCE, CONSUME, CONSUME_TITLE, INFO }
+enum AccountItemType { ACCOUNT, CARD, INSURANCE }
 
 List<AccountItem> getAccountItemList(AccountItemType type) {
   switch (type) {
@@ -47,33 +47,11 @@ List<AccountItem> getAccountItemList(AccountItemType type) {
     case AccountItemType.INSURANCE:
       {
         return <AccountItem>[
-          AccountItem(
-              AccountItemType.INSURANCE, Icons.add_circle, "샘플 보험1", 2345, false),
-          AccountItem(
-              AccountItemType.INSURANCE, Icons.add_circle, "샘플 보험2", 34555, false),
+          AccountItem(AccountItemType.INSURANCE, Icons.add_circle, "샘플 보험1",
+              2345, false),
+          AccountItem(AccountItemType.INSURANCE, Icons.add_circle, "샘플 보험2",
+              34555, false),
         ];
       }
-    case AccountItemType.CONSUME:{
-      return <AccountItem>[
-        AccountItem(
-            AccountItemType.CONSUME, Icons.add_circle, "샘플 내역1", 2345, true),
-        AccountItem(
-            AccountItemType.CONSUME, Icons.add_circle, "샘플 내역2", 34555, false),
-      ];
-    }
-    case AccountItemType.CONSUME_TITLE:{
-      return <AccountItem>[
-        AccountItem(
-            AccountItemType.CONSUME_TITLE, Icons.add_circle, "지름신은 당신을 사랑하십니다", 2345, false),
-      ];
-    }
-    case AccountItemType.INFO:{
-      return <AccountItem>[
-        AccountItem(
-            AccountItemType.INFO, Icons.add_circle, "할부", 2345, true),
-        AccountItem(
-            AccountItemType.INFO, Icons.add_circle, "완료된 고정 지출", 34555, true),
-      ];
-    }
   }
 }

@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 
 const colorDarkBackGround = Color.fromRGBO(16, 16, 18, 1);
 const colorBackGround = Color.fromRGBO(24, 23, 28, 1);
-const colorAssent = Color.fromRGBO(47, 132, 241, 1);
+const colorAssent = Color.fromRGBO(48, 132, 248, 1);
 
 const colorMainIcon = Color.fromRGBO(48, 48, 54, 1);
 const colorTopIcon = Color.fromRGBO(98, 98, 108, 1);
 const colorLine = Color.fromRGBO(44, 44, 48, 1);
 
 const colorButton = Color.fromRGBO(44, 44, 52, 1);
+const colorDialog = Color.fromRGBO(32, 32, 38, 1);
 
 const colorNavigationEnabled = Colors.white;
 const colorNavigationDisabled = Color.fromRGBO(78, 78, 90, 1);

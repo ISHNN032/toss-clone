@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../datas/accountitem.dart';
+import '../../../datas/consumeitem.dart';
 import '../../../style.dart';
 
 class ListItem extends StatelessWidget {
-  final List<AccountItem> list;
+  final List<ConsumeItem> list;
   final String title;
   final String value;
 
@@ -18,7 +18,7 @@ class ListItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 18),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(width: 1, color: colorLine),
+          bottom: BorderSide(width: 18, color: colorDarkBackGround),
         ),
       ),
       child: Column(
@@ -42,7 +42,7 @@ class ListItem extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(
             title,
-            style: textThemePrimary.bodyText1,
+            style: textThemePrimary.bodyText1!.merge(TextStyle(fontSize: 20)),
           ),
           Text(
             value,
@@ -51,16 +51,13 @@ class ListItem extends StatelessWidget {
         ]));
   }
 
-  Widget _buildRow(AccountItem item) {
-    String formattedValue =
-        "${NumberFormat.simpleCurrency(locale: "ko_KR", decimalDigits: 0, name: "").format(item.value)} 원";
-
+  Widget _buildRow(ConsumeItem item) {
     Widget trailing = SizedBox(
       width: 12,
     );
     if (item.available) {
       switch (item.type) {
-        case AccountItemType.CONSUME:
+        case ConsumeItemType.CONSUME:
           trailing = ElevatedButton(
               onPressed: onPressed,
               style: styleButtonSub
@@ -71,20 +68,11 @@ class ListItem extends StatelessWidget {
                     .merge(TextStyle(color: colorAssent)),
               ));
           break;
-        case AccountItemType.CONSUME_TITLE:
+        case ConsumeItemType.CONSUME_TITLE:
           //none
           break;
-        case AccountItemType.INFO:
-          trailing = Text("302,123 원");
-          break;
-        case AccountItemType.ACCOUNT:
-          // none
-          break;
-        case AccountItemType.CARD:
-          // none
-          break;
-        case AccountItemType.INSURANCE:
-          // none
+        case ConsumeItemType.INFO:
+          trailing = Text("882,123 원", style: textThemePrimary.bodyText2,);
           break;
       }
     }
@@ -96,8 +84,8 @@ class ListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "- $formattedValue",
-            style: textThemeItem.bodyText1,
+            item.value,
+            style: textThemeItem.bodyText1!.merge(TextStyle(fontWeight: FontWeight.w400)),
           ),
           SizedBox(
             height: 2,

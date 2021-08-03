@@ -26,11 +26,11 @@ List<BenefitItem> getBenefitItems() {
         Lottie.asset('assets/magnet-cell.json'),
         Color.fromRGBO(36, 35, 33, 1)),
 
-    BenefitItem("주변 서버 개발자 초대하면\n도와달라고 전해주세요", "", "도움 주기",
+    BenefitItem("주변 서버 개발자 분들에게\n도와달라고 전해주세요", "", "도움 주기",
         Lottie.asset('assets/notifications.json'),
         Color.fromRGBO(37, 31, 45, 1)),
 
-    BenefitItem("용돈 주면\n무한한 감사를 받아요", "", "용돈 주기",
+    BenefitItem("지원금 주시면\n무한한 감사를 받아요", "", "용돈 주기",
         Lottie.asset('assets/money.json'),
         Color.fromRGBO(25, 31, 43, 1)),
   ];

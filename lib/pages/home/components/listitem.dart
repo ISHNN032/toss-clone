@@ -88,15 +88,6 @@ class ListItem extends StatelessWidget {
         case AccountItemType.INSURANCE:
           // none
           break;
-        case AccountItemType.CONSUME:
-          // none
-          break;
-        case AccountItemType.CONSUME_TITLE:
-          // none
-          break;
-        case AccountItemType.INFO:
-          // none
-          break;
       }
     }
 

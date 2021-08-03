@@ -46,7 +46,7 @@ class _ConsumePage extends State<ConsumePage> {
           slivers: <Widget>[
             SliverAppBar(
               pinned: true,
-              expandedHeight: 80,
+              expandedHeight: 100,
               backgroundColor: colorBackGround,
               flexibleSpace: Container(
                 child: FlexibleSpaceBar(
@@ -79,7 +79,7 @@ class _ConsumePage extends State<ConsumePage> {
                 ConsumeList(),
                 Container(
                   height: 80,
-                  color: colorBackGround,
+                  color: colorDarkBackGround,
                   alignment: Alignment.center,
                 ),
               ],

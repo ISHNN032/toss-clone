@@ -15,13 +15,13 @@ class _CreditMenu extends State<CreditMenu> {
         padding: EdgeInsets.all(26),
         decoration: BoxDecoration(
           border: Border(
-            bottom: BorderSide(width: 1, color: colorLine),
+            bottom: BorderSide(width: 18, color: colorDarkBackGround),
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("오늘까지 소비/수입"),
+            Text("오늘까지 소비/수입", style: textThemeSub.bodyText2,),
             SizedBox(height: 12,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,11 +33,12 @@ class _CreditMenu extends State<CreditMenu> {
                     Text(
                       "+ 123,321,123 원",
                       style: textThemePrimary.bodyText1!
-                          .merge(TextStyle(color: colorAssent)),
+                          .merge(TextStyle(fontSize: 22, color: colorAssent)),
                     ),
                     Text(
                       "- 123,123,123 원",
-                      style: textThemePrimary.bodyText1,
+                      style: textThemePrimary.bodyText1!
+                          .merge(TextStyle(fontSize: 22)),
                     ),
                   ],
                 ),
