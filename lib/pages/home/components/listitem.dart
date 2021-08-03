@@ -74,7 +74,16 @@ class ListItem extends StatelessWidget {
               ));
           break;
         case AccountItemType.CARD:
-          trailing = Text("실적달성");
+          trailing = Container(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3.2),
+            child: Text("실적 달성",
+                style:
+                textThemeTag.bodyText1!.merge(TextStyle(color: Color.fromRGBO(96, 112, 220, 1)))),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Color.fromRGBO(32, 40, 60, 1)
+            ),
+          );
           break;
         case AccountItemType.INSURANCE:
           // none

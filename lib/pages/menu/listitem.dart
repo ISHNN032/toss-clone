@@ -32,8 +32,7 @@ class ListItem extends StatelessWidget {
     return Container(
         margin: EdgeInsets.symmetric(vertical: 16),
         padding: EdgeInsets.symmetric(horizontal: 24),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
           Text(
             title,
             style: textThemePrimary.bodyText1,
@@ -47,13 +46,40 @@ class ListItem extends StatelessWidget {
     );
     switch (item.tag) {
       case MenuTag.NEW:
-        trailing = Text("새로 나온");
+        trailing = Container(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3.6),
+          child: Text("새로 나온",
+              style:
+                  textThemeTag.bodyText1!.merge(TextStyle(color: Color.fromRGBO(220, 96, 100, 1)))),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Color.fromRGBO(60, 32, 40, 1)
+          ),
+        );
         break;
       case MenuTag.EVENT:
-        trailing = Text("이벤트");
+        trailing = Container(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3.6),
+          child: Text("이벤트",
+              style:
+              textThemeTag.bodyText1!.merge(TextStyle(color: Color.fromRGBO(64, 124, 255, 1)))),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Color.fromRGBO(32, 42, 64, 1)
+          ),
+        );
         break;
       case MenuTag.UPDATE:
-        trailing = Text("업데이트");
+        trailing = Container(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3.6),
+          child: Text("업데이트",
+              style:
+              textThemeTag.bodyText1!.merge(TextStyle(color: Color.fromRGBO(220, 164, 64, 1)))),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Color.fromRGBO(68, 60, 32, 1)
+          ),
+        );
         break;
       case MenuTag.NONE:
         // TODO: Handle this case.
@@ -61,6 +87,7 @@ class ListItem extends StatelessWidget {
     }
 
     return Container(
+      padding: EdgeInsets.only(left: 12),
         child: ListTile(
       //contentPadding: EdgeInsets.fromLTRB(24, 8, 24, 8),
       title: Column(
@@ -68,7 +95,8 @@ class ListItem extends StatelessWidget {
         children: [
           Text(
             item.title,
-            style: textThemeItem.bodyText1,
+            style: textThemeItem.bodyText2!
+                .merge(TextStyle(fontSize: 16, color: colorToneUp)),
           ),
         ],
       ),

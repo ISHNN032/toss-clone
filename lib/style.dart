@@ -39,6 +39,11 @@ final TextTheme textThemeItem = TextTheme(
       TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: colorToneMid),
 );
 
+final TextTheme textThemeTag = TextTheme(
+    bodyText1: TextStyle(
+  fontSize: 11,
+  fontWeight: FontWeight.w600, color: colorToneUp
+));
 
 final ButtonStyle styleButtonPrimary = ElevatedButton.styleFrom(
   padding: EdgeInsets.fromLTRB(16, 4, 16, 4),
