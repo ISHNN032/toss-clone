@@ -15,7 +15,7 @@ class _BenefitList extends State<BenefitList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ListItem(benefitItems, "내 포인트", "0원", ">"),
+        ListItem(benefitItems),
       ],
     );
   }

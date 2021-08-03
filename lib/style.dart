@@ -18,6 +18,7 @@ const colorNavigationDisabled = Color.fromRGBO(78, 78, 90, 1);
 const colorToneUp = Colors.white;
 const colorToneMid = Color.fromRGBO(200, 200, 212, 1);
 const colorToneDown = Color.fromRGBO(160, 160, 168, 1);
+const colorToneDark = Color.fromRGBO(120, 124, 132, 1);
 
 final TextTheme textThemePrimary = TextTheme(
   bodyText1:
