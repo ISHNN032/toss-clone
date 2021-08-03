@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:lottie/lottie.dart';
+import 'package:toss_clone/pages/home/innerpages/remitpage.dart';
 
 import '../../../style.dart';
 
@@ -56,5 +59,32 @@ class _CreditMenu extends State<CreditMenu> {
         ));
   }
 
-  void remitPressed() {}
+  void remitPressed() async {
+    bool isLocalAuth = await LocalAuthentication().canCheckBiometrics;
+    if (isLocalAuth) {
+      bool authenticated = await LocalAuthentication()
+          .authenticate(localizedReason: '지문 인식은 그냥 데모용입니다.');
+      if (authenticated) {
+        Navigator.of(context).push(_createRoute());
+      }
+    }
+  }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const RemitPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
