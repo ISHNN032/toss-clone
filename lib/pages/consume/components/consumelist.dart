@@ -9,10 +9,10 @@ class ConsumeList extends StatefulWidget {
 }
 
 class _ConsumeList extends State<ConsumeList> {
-  List<AccountItem> consumeItems = getMenuPageItemList(AccountItemType.CONSUME);
-  List<AccountItem> consumeTitleItems = getMenuPageItemList(AccountItemType.CONSUME_TITLE);
+  List<AccountItem> consumeItems = getAccountItemList(AccountItemType.CONSUME);
+  List<AccountItem> consumeTitleItems = getAccountItemList(AccountItemType.CONSUME_TITLE);
   List<AccountItem> infoItems =
-      getMenuPageItemList(AccountItemType.INFO);
+      getAccountItemList(AccountItemType.INFO);
 
   @override
   Widget build(BuildContext context) {

@@ -9,10 +9,10 @@ class HomeList extends StatefulWidget {
 }
 
 class _HomeList extends State<HomeList> {
-  List<AccountItem> accountItems = getMenuPageItemList(AccountItemType.ACCOUNT);
-  List<AccountItem> cardItems = getMenuPageItemList(AccountItemType.CARD);
+  List<AccountItem> accountItems = getAccountItemList(AccountItemType.ACCOUNT);
+  List<AccountItem> cardItems = getAccountItemList(AccountItemType.CARD);
   List<AccountItem> insuranceItems =
-      getMenuPageItemList(AccountItemType.INSURANCE);
+      getAccountItemList(AccountItemType.INSURANCE);
 
   @override
   Widget build(BuildContext context) {

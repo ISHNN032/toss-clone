@@ -12,7 +12,7 @@ class AccountItem {
 
 enum AccountItemType { ACCOUNT, CARD, INSURANCE, CONSUME, CONSUME_TITLE, INFO }
 
-List<AccountItem> getMenuPageItemList(AccountItemType type) {
+List<AccountItem> getAccountItemList(AccountItemType type) {
   switch (type) {
     case AccountItemType.ACCOUNT:
       {
