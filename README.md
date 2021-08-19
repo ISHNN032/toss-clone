@@ -2,6 +2,8 @@
 
 A Toss clone code project using Flutter.
 
+![all](https://user-images.githubusercontent.com/20736162/129988728-38914892-5159-41b4-9757-c02dcee6daca.gif)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
